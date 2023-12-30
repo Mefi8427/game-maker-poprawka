@@ -23,6 +23,7 @@ func _process(_delta):
 	restart()
 	player_score()
 	progress_bar()
+	print(bar_negative)
 	
 	
 func player_score():
@@ -31,8 +32,12 @@ func player_score():
 	scoreLabel.text = str(score)
 	if LeftPressed == 1 or RightPressed == 1:
 		score += 1
+		BarItself.value += 1.5
+		
 		
 func progress_bar():
+	if game_over == 1:
+		return
 	bar_negative = float(score * 0.005)
 	if bar_negative < 0.055:
 		bar_negative = 0.06
