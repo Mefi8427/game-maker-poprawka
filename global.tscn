@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkj775ypu3ad6"]
+
+[ext_resource type="Texture2D" uid="uid://csewpcuk60ajv" path="res://graphics/backgroundimage.png" id="1_oqej8"]
+[ext_resource type="Texture2D" uid="uid://b1wtffagngqf0" path="res://graphics/kaufmo1.png" id="2_vk0u0"]
+[ext_resource type="Texture2D" uid="uid://dbr32bprildlv" path="res://graphics/kaufmo2.png" id="3_6ns8h"]
+[ext_resource type="Texture2D" uid="uid://cxtcmg0kwp2co" path="res://graphics/pomnianimacja.png" id="5_bem3n"]
+[ext_resource type="Texture2D" uid="uid://i7snhv0e6fbl" path="res://graphics/noga1f.png" id="5_soen7"]
+[ext_resource type="Texture2D" uid="uid://cvjc5iyiif6i3" path="res://graphics/noga3f.png" id="5_sp2l7"]
+[ext_resource type="Texture2D" uid="uid://lsu033r2t0c0" path="res://noga2f.png" id="7_f5exs"]
+[ext_resource type="Script" path="res://kamera.gd" id="7_vgd61"]
+[ext_resource type="Texture2D" uid="uid://7p8docehgt2j" path="res://graphics/noga4.png" id="9_3b46c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8dh18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vk0u0")
+}, {
+"duration": 1.5,
+"texture": ExtResource("3_6ns8h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Backgroundimage" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.36817, 1.08908)
+texture = ExtResource("1_oqej8")
+
+[node name="kaufmo" type="AnimatedSprite2D" parent="."]
+position = Vector2(563, 341)
+sprite_frames = SubResource("SpriteFrames_8dh18")
+autoplay = "default"
+
+[node name="pomni" type="Sprite2D" parent="."]
+position = Vector2(468, 571)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_bem3n")
+hframes = 12
+vframes = 2
+
+[node name="Noga1" type="Sprite2D" parent="."]
+position = Vector2(482, 497)
+texture = ExtResource("5_soen7")
+script = ExtResource("7_vgd61")
+
+[node name="Noga2" type="Sprite2D" parent="."]
+position = Vector2(657, 373)
+texture = ExtResource("7_f5exs")
+script = ExtResource("7_vgd61")
+
+[node name="Noga3" type="Sprite2D" parent="."]
+position = Vector2(482, 249)
+texture = ExtResource("5_sp2l7")
+script = ExtResource("7_vgd61")
+
+[node name="Noga4" type="Sprite2D" parent="."]
+position = Vector2(708, 125)
+texture = ExtResource("9_3b46c")
+script = ExtResource("7_vgd61")
