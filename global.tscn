@@ -62,3 +62,10 @@ script = ExtResource("7_vgd61")
 position = Vector2(708, 125)
 texture = ExtResource("9_3b46c")
 script = ExtResource("7_vgd61")
+
+[node name="scoreLabel" type="Label" parent="."]
+offset_left = 517.0
+offset_top = 67.0
+offset_right = 637.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 40
