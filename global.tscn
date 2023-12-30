@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkj775ypu3ad6"]
+[gd_scene load_steps=14 format=3 uid="uid://dkj775ypu3ad6"]
 
 [ext_resource type="Texture2D" uid="uid://csewpcuk60ajv" path="res://graphics/backgroundimage.png" id="1_oqej8"]
 [ext_resource type="Texture2D" uid="uid://b1wtffagngqf0" path="res://graphics/kaufmo1.png" id="2_vk0u0"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://lsu033r2t0c0" path="res://noga2f.png" id="7_f5exs"]
 [ext_resource type="Script" path="res://kamera.gd" id="7_vgd61"]
 [ext_resource type="Texture2D" uid="uid://7p8docehgt2j" path="res://graphics/noga4.png" id="9_3b46c"]
+[ext_resource type="Texture2D" uid="uid://cvsrd2mngk2wp" path="res://graphics/pasek2.png" id="10_nrb26"]
+[ext_resource type="Texture2D" uid="uid://cul0eevb2l3qv" path="res://graphics/over.png" id="11_w327w"]
+[ext_resource type="Texture2D" uid="uid://db43s4pdvarp8" path="res://graphics/pasek.png" id="12_bkcgi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8dh18"]
 animations = [{
@@ -64,8 +67,21 @@ texture = ExtResource("9_3b46c")
 script = ExtResource("7_vgd61")
 
 [node name="scoreLabel" type="Label" parent="."]
-offset_left = 517.0
-offset_top = 67.0
-offset_right = 637.0
-offset_bottom = 157.0
+offset_left = 514.0
+offset_top = 114.0
+offset_right = 634.0
+offset_bottom = 204.0
 theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 336.0
+offset_top = 31.0
+offset_right = 2724.0
+offset_bottom = 221.0
+scale = Vector2(0.2, 0.2)
+step = 0.1
+value = 100.0
+texture_under = ExtResource("10_nrb26")
+texture_over = ExtResource("11_w327w")
+texture_progress = ExtResource("12_bkcgi")
