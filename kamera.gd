@@ -68,3 +68,7 @@ func fix():
 		
 
 	
+
+
+func _on_test_pressed():
+	print("chuj")

@@ -11,6 +11,14 @@ var score = 0
 @onready var scoreLabel = get_node("/root/Node2D/scoreLabel")
 @onready var BarItself = get_node("/root/Node2D/TextureProgressBar")
 var bar_negative = 0
+@onready var pauseMenu = get_node("/root/Node2D/pasu_menu")
+var pasek = 0
+	
+func menu():
+	if int(Input.is_action_just_pressed("pause")) == 1:
+		pauseMenu.show()
+		pasek = 1
+		print("chuj")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,8 +31,7 @@ func _process(_delta):
 	restart()
 	player_score()
 	progress_bar()
-	print(bar_negative)
-	
+	menu()	
 	
 func player_score():
 	if game_over == 1:
@@ -36,6 +43,8 @@ func player_score():
 		
 		
 func progress_bar():
+	if pasek == 1:
+		return
 	if game_over == 1:
 		return
 	bar_negative = float(score * 0.005)
@@ -77,4 +86,4 @@ func restart():
 		get_tree().reload_current_scene()
 
 	
-		
+

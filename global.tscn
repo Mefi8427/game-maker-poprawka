@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkj775ypu3ad6"]
+[gd_scene load_steps=16 format=3 uid="uid://dkj775ypu3ad6"]
 
 [ext_resource type="Texture2D" uid="uid://csewpcuk60ajv" path="res://graphics/backgroundimage.png" id="1_oqej8"]
 [ext_resource type="Texture2D" uid="uid://b1wtffagngqf0" path="res://graphics/kaufmo1.png" id="2_vk0u0"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cvsrd2mngk2wp" path="res://graphics/pasek2.png" id="10_nrb26"]
 [ext_resource type="Texture2D" uid="uid://cul0eevb2l3qv" path="res://graphics/over.png" id="11_w327w"]
 [ext_resource type="Texture2D" uid="uid://db43s4pdvarp8" path="res://graphics/pasek.png" id="12_bkcgi"]
+[ext_resource type="AudioStream" uid="uid://ots7tspr0eiw" path="res://audio/glitch.mp3" id="13_xa1eo"]
+[ext_resource type="Script" path="res://pause_menu.gd" id="14_eokmp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8dh18"]
 animations = [{
@@ -85,3 +87,52 @@ value = 100.0
 texture_under = ExtResource("10_nrb26")
 texture_over = ExtResource("11_w327w")
 texture_progress = ExtResource("12_bkcgi")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xa1eo")
+autoplay = true
+
+[node name="pasu_menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+script = ExtResource("14_eokmp")
+
+[node name="ColorRect" type="ColorRect" parent="pasu_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="pasu_menu"]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 254.0
+offset_right = 585.0
+offset_bottom = 347.0
+scale = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="pasu_menu/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " PAUSED"
+
+[node name="resume" type="Button" parent="pasu_menu/GridContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="quit" type="Button" parent="pasu_menu/GridContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pasu_menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="pasu_menu/GridContainer/resume" to="pasu_menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="pasu_menu/GridContainer/quit" to="pasu_menu" method="_on_quit_pressed"]
