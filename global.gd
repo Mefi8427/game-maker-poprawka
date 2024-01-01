@@ -24,6 +24,7 @@ var left = 0
 var right = 0
 var SP1 = 0
 var SP2 = 0
+@onready var PomniAnimationPlayer = get_node("/root/Node2D/pomni/AnimationPlayer")
 	
 func menu():
 	if int(Input.is_action_just_pressed("pause")) == 1:
@@ -61,7 +62,9 @@ func special_move():
 		if SpecialMove == 4:
 			WASD = "D"
 	
-		
+
+func wait(duration):  
+	await(get_tree().create_timer(duration).timeout)
 		
 func player_score():
 	if game_over == 1:
@@ -92,7 +95,9 @@ func progress_bar():
 		bar_negative = 0.3
 	BarItself.value -= bar_negative
 	if BarItself.value == 0:
+		PomniAnimationPlayer.play("timeout_death")
 		game_over = 1
+		await(wait(60))
 	
 	
 
@@ -106,8 +111,16 @@ func movement():
 	
 	if LeftPressed == 1:
 		Pomni.position.x = 468
+		PomniAnimationPlayer.play("jump_left")
+		await(wait(0.2))
+		PomniAnimationPlayer.play("idle")
+		
 	elif RightPressed == 1:
 		Pomni.position.x = 681
+		PomniAnimationPlayer.play("jump_right")
+		await(wait(0.2))
+		PomniAnimationPlayer.play("idle")
+		
 		
 func restart():
 	RPressed = int(Input.is_action_just_pressed("restart"))
