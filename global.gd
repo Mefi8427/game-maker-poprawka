@@ -13,6 +13,17 @@ var score = 0
 var bar_negative = 0
 @onready var pauseMenu = get_node("/root/Node2D/pasu_menu")
 var pasek = 0
+var WASD = "W"
+var SpecialMove = 1
+var wPressed = 0
+var aPressed = 0
+var sPressed = 0
+var dPressed = 0
+@onready var wasd = get_node("/root/Node2D/wasd")
+var left = 0
+var right = 0
+var SP1 = 0
+var SP2 = 0
 	
 func menu():
 	if int(Input.is_action_just_pressed("pause")) == 1:
@@ -32,7 +43,26 @@ func _process(_delta):
 	player_score()
 	progress_bar()
 	menu()	
+	special_move()
 	
+	
+func special_move():
+	wasd.text = str(WASD)
+	if game_over == 1:
+		return 
+	if wPressed == 1 or aPressed == 1 or sPressed == 1 or dPressed == 1:
+		SpecialMove = random.randi_range(1,4)
+		if SpecialMove == 1:
+			WASD = "W"
+		if SpecialMove == 2:
+			WASD = "A"
+		if SpecialMove == 3:
+			WASD = "S"
+		if SpecialMove == 4:
+			WASD = "D"
+	
+		
+		
 func player_score():
 	if game_over == 1:
 		return

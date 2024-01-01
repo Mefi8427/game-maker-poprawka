@@ -13,7 +13,33 @@ func _process(_delta):
 	movement()
 	going_back()
 	fix()
+	movement2()
+	why()
 	
+	
+func why():
+	if int(Input.is_action_just_pressed("test")):
+		print(position)
+	
+
+
+	
+func movement2():
+	Global.wPressed = int(Input.is_action_just_pressed("w"))
+	Global.aPressed = int(Input.is_action_just_pressed("a"))
+	Global.sPressed = int(Input.is_action_just_pressed("s"))
+	Global.dPressed = int(Input.is_action_just_pressed("d"))
+	
+	
+	if Global.SpecialMove == 1 and Global.wPressed:
+		print("kys")
+		position.y += 124
+	if Global.SpecialMove == 2 and Global.aPressed:
+		position.y += 124
+	if Global.SpecialMove == 3 and Global.sPressed:
+		position.y += 124
+	if Global.SpecialMove == 4 and Global.dPressed:
+		position.y += 124
 	
 	
 func movement():
@@ -70,5 +96,4 @@ func fix():
 	
 
 
-func _on_test_pressed():
-	print("chuj")
+

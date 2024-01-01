@@ -134,5 +134,65 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="wasd" type="Label" parent="."]
+offset_left = 210.0
+offset_top = 156.0
+offset_right = 256.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 49
+
+[node name="Label" type="Label" parent="."]
+offset_left = 166.0
+offset_top = 125.0
+offset_right = 327.0
+offset_bottom = 156.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "SPECIAL MOVE:"
+
+[node name="menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+script = ExtResource("14_eokmp")
+
+[node name="ColorRect" type="ColorRect" parent="menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="menu"]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 249.0
+offset_right = 557.0
+offset_bottom = 342.0
+scale = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="menu/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " game maker poprawka"
+
+[node name="resume" type="Button" parent="menu/GridContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="quit" type="Button" parent="menu/GridContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="pasu_menu/GridContainer/resume" to="pasu_menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="pasu_menu/GridContainer/quit" to="pasu_menu" method="_on_quit_pressed"]
+[connection signal="pressed" from="menu/GridContainer/resume" to="menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="menu/GridContainer/quit" to="menu" method="_on_quit_pressed"]
