@@ -1,11 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://dkj775ypu3ad6"]
+[gd_scene load_steps=26 format=3 uid="uid://dkj775ypu3ad6"]
 
 [ext_resource type="Texture2D" uid="uid://csewpcuk60ajv" path="res://graphics/backgroundimage.png" id="1_oqej8"]
 [ext_resource type="Texture2D" uid="uid://b1wtffagngqf0" path="res://graphics/kaufmo1.png" id="2_vk0u0"]
 [ext_resource type="Texture2D" uid="uid://dbr32bprildlv" path="res://graphics/kaufmo2.png" id="3_6ns8h"]
+[ext_resource type="AudioStream" uid="uid://b1vuyivehb581" path="res://audio/swosh-01.mp3" id="5_235pw"]
 [ext_resource type="Texture2D" uid="uid://cxtcmg0kwp2co" path="res://graphics/pomnianimacja.png" id="5_bem3n"]
 [ext_resource type="Texture2D" uid="uid://i7snhv0e6fbl" path="res://graphics/noga1f.png" id="5_soen7"]
 [ext_resource type="Texture2D" uid="uid://cvjc5iyiif6i3" path="res://graphics/noga3f.png" id="5_sp2l7"]
+[ext_resource type="AudioStream" uid="uid://cqek6t7d36pjq" path="res://audio/1.wav" id="6_wn2h1"]
 [ext_resource type="Texture2D" uid="uid://lsu033r2t0c0" path="res://noga2f.png" id="7_f5exs"]
 [ext_resource type="Script" path="res://kamera.gd" id="7_vgd61"]
 [ext_resource type="Texture2D" uid="uid://7p8docehgt2j" path="res://graphics/noga4.png" id="9_3b46c"]
@@ -173,6 +175,12 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="pomni"]
+stream = ExtResource("5_235pw")
+
+[node name="AudioDeath" type="AudioStreamPlayer2D" parent="pomni"]
+stream = ExtResource("6_wn2h1")
+
 [node name="Noga1" type="Sprite2D" parent="."]
 position = Vector2(482, 497)
 texture = ExtResource("5_soen7")
@@ -258,6 +266,11 @@ text = "QUIT"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+text = "Soundtrack: \"glitch\" by celestialghost8 on opengameart.org on CC0 Publicc Domain license
+
+Graphics: done myself :)
+
+SFX: Swish by Ivan Gabovitch on opengameart.org on CC0 Public Domain Licence"
 
 [node name="wasd" type="Label" parent="."]
 offset_left = 210.0
@@ -317,6 +330,8 @@ text = "QUIT"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="pasu_menu/GridContainer/resume" to="pasu_menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="pasu_menu/GridContainer/quit" to="pasu_menu" method="_on_quit_pressed"]

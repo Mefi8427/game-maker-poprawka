@@ -49,13 +49,25 @@ func movement():
 		position.y += 124
 		
 func death():
+	if Global.game_over == 1:
+			return
 	if Global.Pomni.position.x == 468 and position == Vector2(482,621):
 		Global.PomniAnimationPlayer.play("death_left")
+		Global.hit_death = 1
+		Global.HitDeathSFX()
 		Global.game_over = 1
+	
+		
+	
+		
 	
 	elif Global.Pomni.position.x == 681 and position == Vector2(657, 621):
 		Global.PomniAnimationPlayer.play("death_right")
+		Global.hit_death = 1
+		Global.HitDeathSFX()
 		Global.game_over = 1
+		
+			
 		
 		
 func going_back():

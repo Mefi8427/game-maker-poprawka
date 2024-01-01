@@ -25,6 +25,17 @@ var right = 0
 var SP1 = 0
 var SP2 = 0
 @onready var PomniAnimationPlayer = get_node("/root/Node2D/pomni/AnimationPlayer")
+@onready var PomniAudioPlayer = get_node("/root/Node2D/pomni/AudioStreamPlayer2D")
+@onready var PomniDeathPlayer = get_node("/root/Node2D/pomni/AudioDeath")
+var hit_death
+
+
+
+func HitDeathSFX():
+	if hit_death == 1 and PomniDeathPlayer.is_playing() == false:
+		PomniDeathPlayer.play()
+		
+		
 	
 func menu():
 	if int(Input.is_action_just_pressed("pause")) == 1:
@@ -45,6 +56,7 @@ func _process(_delta):
 	progress_bar()
 	menu()	
 	special_move()
+	
 	
 	
 func special_move():
@@ -110,12 +122,14 @@ func movement():
 	RightPressed = int(Input.is_action_just_pressed("right"))
 	
 	if LeftPressed == 1:
+		PomniAudioPlayer.play()
 		Pomni.position.x = 468
 		PomniAnimationPlayer.play("jump_left")
 		await(wait(0.2))
 		PomniAnimationPlayer.play("idle")
 		
 	elif RightPressed == 1:
+		PomniAudioPlayer.play()
 		Pomni.position.x = 681
 		PomniAnimationPlayer.play("jump_right")
 		await(wait(0.2))
