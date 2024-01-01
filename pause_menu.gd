@@ -5,7 +5,7 @@ extends Control
 
 
 func _on_resume_pressed():
-	Global.pasek = 0
+	Global.pasek = 1
 	visible = false
 
 

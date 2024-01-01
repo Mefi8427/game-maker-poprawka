@@ -28,6 +28,10 @@ var SP2 = 0
 @onready var PomniAudioPlayer = get_node("/root/Node2D/pomni/AudioStreamPlayer2D")
 @onready var PomniDeathPlayer = get_node("/root/Node2D/pomni/AudioDeath")
 var hit_death
+var disappear = 0
+var help = 0
+var yandev = 0
+
 
 
 
@@ -64,6 +68,8 @@ func special_move():
 	if game_over == 1:
 		return 
 	if wPressed == 1 or aPressed == 1 or sPressed == 1 or dPressed == 1:
+		help = 1
+		PomniAudioPlayer.play()
 		SpecialMove = random.randi_range(1,4)
 		if SpecialMove == 1:
 			WASD = "W"
@@ -88,7 +94,8 @@ func player_score():
 		
 		
 func progress_bar():
-	if pasek == 1:
+
+	if pasek == 0:
 		return
 	if game_over == 1:
 		return
@@ -127,6 +134,12 @@ func movement():
 		PomniAnimationPlayer.play("jump_left")
 		await(wait(0.2))
 		PomniAnimationPlayer.play("idle")
+		if yandev == 0:
+			yandev = 1
+		elif yandev == 1:
+			yandev = 0 
+			help = 0
+		
 		
 	elif RightPressed == 1:
 		PomniAudioPlayer.play()
@@ -134,13 +147,23 @@ func movement():
 		PomniAnimationPlayer.play("jump_right")
 		await(wait(0.2))
 		PomniAnimationPlayer.play("idle")
+		if yandev == 0:
+			yandev = 1
+		elif yandev == 1:
+			yandev = 0
+			help = 0
+		
+
 		
 		
+
 func restart():
 	RPressed = int(Input.is_action_just_pressed("restart"))
-	
 	if RPressed == 1:
-		get_tree().reload_current_scene()
-
+		PomniAnimationPlayer.play("idle")
+		game_over = 0
+		BarItself.value = 100
+		score = 0
+		disappear = 1
 	
 

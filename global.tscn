@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkj775ypu3ad6"]
+[gd_scene load_steps=27 format=3 uid="uid://dkj775ypu3ad6"]
 
 [ext_resource type="Texture2D" uid="uid://csewpcuk60ajv" path="res://graphics/backgroundimage.png" id="1_oqej8"]
 [ext_resource type="Texture2D" uid="uid://b1wtffagngqf0" path="res://graphics/kaufmo1.png" id="2_vk0u0"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://db43s4pdvarp8" path="res://graphics/pasek.png" id="12_bkcgi"]
 [ext_resource type="AudioStream" uid="uid://ots7tspr0eiw" path="res://audio/glitch.mp3" id="13_xa1eo"]
 [ext_resource type="Script" path="res://pause_menu.gd" id="14_eokmp"]
+[ext_resource type="Script" path="res://Camera.gd" id="17_qoxdh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8dh18"]
 animations = [{
@@ -152,8 +153,8 @@ _data = {
 [node name="Node2D" type="Node2D"]
 
 [node name="Backgroundimage" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(1.36817, 1.08908)
+position = Vector2(583.5, 330.5)
+scale = Vector2(1.54276, 1.31933)
 texture = ExtResource("1_oqej8")
 
 [node name="kaufmo" type="AnimatedSprite2D" parent="."]
@@ -225,6 +226,23 @@ texture_progress = ExtResource("12_bkcgi")
 stream = ExtResource("13_xa1eo")
 autoplay = true
 
+[node name="wasd" type="Label" parent="."]
+offset_left = 210.0
+offset_top = 156.0
+offset_right = 256.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 49
+
+[node name="Label" type="Label" parent="."]
+offset_left = 166.0
+offset_top = 125.0
+offset_right = 327.0
+offset_bottom = 156.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "SPECIAL MOVE:"
+
 [node name="pasu_menu" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -264,33 +282,18 @@ text = "QUIT"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="pasu_menu"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 530.0
+offset_top = 446.0
+offset_right = 1168.0
+offset_bottom = 636.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Soundtrack: \"glitch\" by celestialghost8 on opengameart.org on CC0 Publicc Domain license
 
 Graphics: done myself :)
 
-SFX: Swish by Ivan Gabovitch on opengameart.org on CC0 Public Domain Licence"
-
-[node name="wasd" type="Label" parent="."]
-offset_left = 210.0
-offset_top = 156.0
-offset_right = 256.0
-offset_bottom = 224.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 49
-
-[node name="Label" type="Label" parent="."]
-offset_left = 166.0
-offset_top = 125.0
-offset_right = 327.0
-offset_bottom = 156.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
-text = "SPECIAL MOVE:"
+SFX: Swish by Ivan Gabovitch and Punch Slap 'n' Kick by CGEffex on opengameart.org on CC0 Public Domain Licence and CC-BY 3.0 Public Domain Licence (https://opengameart.org/content/punch-slap-n-kick)"
 
 [node name="menu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
@@ -320,11 +323,17 @@ text = " game maker poprawka"
 
 [node name="resume" type="Button" parent="menu/GridContainer"]
 layout_mode = 2
-text = "RESUME"
+text = "PLAY"
 
 [node name="quit" type="Button" parent="menu/GridContainer"]
 layout_mode = 2
 text = "QUIT"
+
+[node name="Label2" type="Label" parent="menu/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(press R to restart)"
+horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="menu"]
 layout_mode = 0
@@ -332,6 +341,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(573, 325)
+script = ExtResource("17_qoxdh")
 
 [connection signal="pressed" from="pasu_menu/GridContainer/resume" to="pasu_menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="pasu_menu/GridContainer/quit" to="pasu_menu" method="_on_quit_pressed"]
